@@ -3,7 +3,6 @@ package box
 import (
 	"crypto/rand"
 	"errors"
-	"fmt"
 
 	"golang.org/x/crypto/nacl/box"
 )
@@ -16,7 +15,6 @@ func Seal(message []byte, pk *[publicKeyLength]byte) ([]byte, error) {
 	out := make([]byte, publicKeyLength, len(message)+box.Overhead+publicKeyLength)
 
 	ePk, eSk, err := box.GenerateKey(rand.Reader)
-	fmt.Println(ePk)
 
 	if err != nil {
 		return nil, err
